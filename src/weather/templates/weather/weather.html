@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Weather is ?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="D:\workspace\webappps\django-weather\src\weather\static\weather\css\debuger.css" /> -->
+</head>
+<style>
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+    <!-- 第一个section -->
+    <section class="hero">
+        <div class="hero-body"style="background-color:rgb(38, 108, 134);">
+            <div class="container">
+                <figure class="image center">
+                    <img src="{% static 'weather/img/weather.jpg' %}" style="max-width: 512px;">
+                </figure>
+            </div>
+        </div>
+    </section>
+    <!-- 第二个section -->
+    <section>
+        <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags %}
+                <article class="message is-{% if message.tags == 'error' %}danger{% else %}{{message.tags}}{% endif %}">
+                        <div class="message-body">
+                            <p class="has-text-centered is-size-4">{{message}}</p>
+                        </div>
+                </article>
+                {% endif %}
+            {% endfor %}
+        {% endif %}      
+        </div>
+    </section>
+    <!-- 第三个section -->
+    <section class="section has-background-light">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                                <button type="submit" class="button is-primary">
+                                    Check
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 第四个section -->
+    <section class="section">
+        <div class="container">
+            <div class="columns is-multiline">
+                {% for city in citys %}
+                <div class="column is-one-third">
+                    <article class="media">
+                        <figure class="media-left">
+                            {% if city.img_static %}
+                                <img src="{% static city.icon %}" alt="Image"style="max-width: 50px;max-height: 50px;">
+                            {% else %}
+                                <img src="http://openweathermap.org/img/w/{{ city.icon }}.png" alt="Image">
+                            {% endif %}
+                        </figure>
+                        <div class="media-content">
+                            <div class="content">
+                                <h1 class="title">{{ city.name }}</h1>
+                                <p class="is-size-5 ">{{ city.description }}</p>
+                                <p class="is-size-3">{{ city.temp }}℃</p>
+                            </div>
+                        </div>
+                    </article>    
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>
