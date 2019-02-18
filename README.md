@@ -17,5 +17,5 @@ Thanks a lot for these AIP to provide data
 - [Openweather API](https://home.openweathermap.org)
 
 # Tips
-- The Openweather API also can check China's weather by use Pingying,but it not accuracy with some citys
-- If you in China ,Please do not input with use Pingying,Chinese is perfect
+- The Openweather API also can check China's weather by use Pingyin,but it not accuracy with some citys
+- If you in China ,Please do not input with use Pingyin,Chinese is perfect
