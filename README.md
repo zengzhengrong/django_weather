@@ -18,9 +18,9 @@ Thanks a lot for these AIP to provide data
 - [Openweather API](https://home.openweathermap.org)
 
 # Usage
-- You register the [Openweather API](https://home.openweathermap.org)
+- Register the [Openweather API](https://home.openweathermap.org)
 - Get the API for your account
-- settings.py add your apikey like this 
+- Add your apikey to settings.py like this :
 ```
 APIKEY = 'your apikey'
 ```
