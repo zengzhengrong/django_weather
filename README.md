@@ -11,10 +11,19 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+
 # AIP
 Thanks a lot for these AIP to provide data
 - [China's weather API](http://www.tianqiapi.com)
 - [Openweather API](https://home.openweathermap.org)
+
+# Usage
+- You register the [Openweather API](https://home.openweathermap.org)
+- Get the API for your account
+- settings.py add your apikey like this 
+```
+APIKEY = 'your apikey'
+```
 
 # Tips
 - The Openweather API can also  check China's weather by use Pinyin,but it not accuracy with some citys

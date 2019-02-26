@@ -27,7 +27,9 @@ def get_citys_weather(apikey,citys,units_format='metric',lang='en_us'):
             'temp':respon['data'][0]['tem'].replace('℃',''),
             'img_static':True
             }
-        else:    
+        else:
+            if apikey == None:
+                raise AttributeError('You must set the APIKEY in settings.py')    
             url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&units={units_format}&lang={lang}&appid={apikey}'
             respon = requests.get(url).json()
             if respon['cod'] == '404':

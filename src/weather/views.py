@@ -9,7 +9,7 @@ from .utils import get_citys_weather
 
 def index(request):
     template = 'weather/weather.html'
-    APIKEY = 'babbc8e3e70b8c1ef12a12e35ad3cd12'
+    APIKEY = getattr(settings,'APIKEY',None)
     form = CityForm()
 
     citys = [city.name for city in City.objects.all()]
